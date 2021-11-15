@@ -1,0 +1,21 @@
+@import "./const.scss";
+
+@mixin media($media) {
+  @if $media == mobile-screens {
+    @media only screen and (max-width: $small) {
+      @content;
+    }
+  } @else if $media == tablet-screens {
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) {
+      @content;
+    }
+  } @else if $media == tab-desctop-screens {
+    @media only screen and (min-width: $small + 1) and (max-width: $wide) {
+      @content;
+    }
+  } @else if $media == wide-screens {
+    @media only screen and (min-width: $wide + 1) {
+      @content;
+    }
+  }
+}

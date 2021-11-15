@@ -1,0 +1,19 @@
+.header {
+    flex: 0 0 auto;
+    text-align: center;
+    background-color: lightblue;
+    padding: 30px;
+}
+
+.footer {
+    flex: 0 0 auto;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 30px;
+}
+
+.main {
+    flex: 1 0 auto;
+    background-color: lightgray;
+}
