@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ItemArticle from "./ItemArticle";
 import Form from "./Form";
-
+ 
 const defaultState = [
     {
       id: 1,

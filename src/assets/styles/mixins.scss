@@ -1,5 +1,5 @@
 @import "./const.scss";
-
+ 
 @mixin media($media) {
   @if $media == mobile-screens {
     @media only screen and (max-width: $small) {

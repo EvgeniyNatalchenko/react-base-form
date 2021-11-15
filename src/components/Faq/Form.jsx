@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from './faq.module.scss'
-
+ 
 export class Form extends Component {
   state = {
     title: null,

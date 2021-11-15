@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Layout from "./components/Layout";
 import "./assets/styles/index.scss";
 import Faq from "./components/Faq";
-
+ 
 ReactDOM.render(
   <StrictMode>
     <Layout>
