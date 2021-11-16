@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from './faq.module.scss'
  
-function  Form({addArticle}) {
+import {ArticleContext} from './index'
+
+function  Form() {
 
   const [title, setTitle] = useState('');
   const [about, setAbout] = useState('');
-
+  const [articles, setArticles] = useContext(ArticleContext)
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
     if (title && about) {
-    addArticle({ title, about });
+      setArticles(prev => [...prev, { title, about }]);
    
     }
   };
