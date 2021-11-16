@@ -1,25 +1,22 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
  
-export class ItemArticle extends Component {
-  state = {
-    isShowAbout: false,
-  };
+function ItemArticle({article}) {
 
-  handleTitleClick = () => {
-    this.setState({ isShowAbout: !this.state.isShowAbout });
-  };
+  const [isShowAbout, SetIsShowAbout] = useState(false)
 
-  render() {
-    const { article } = this.props;
-    const { isShowAbout } = this.state;
+
+  const handleTitleClick = () => {
+  //SetIsShowAbout(!isShowAbout);
+    SetIsShowAbout(prev => !prev);
+  };
 
     return (
       <div>
-        <h2 onClick={this.handleTitleClick}>{article.title}</h2>
+        <h2 onClick={handleTitleClick}>{article.title}</h2>
         {isShowAbout && <p>{article.about}</p>}
       </div>
     );
-  }
+
 }
 
 export default ItemArticle;

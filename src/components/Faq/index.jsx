@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import ItemArticle from "./ItemArticle";
 import Form from "./Form";
  
@@ -15,27 +15,24 @@ const defaultState = [
     },
 ]
 
-export class Faq extends Component {
-  state = {
-    articles: defaultState,
-  };
+function Faq() {
 
-  addArticle = ({ title, about }) => {
+  const [articles, setArticles] = useState(defaultState)
+
+  const addArticle = ({ title, about }) => {
     if (title && about) {
-      this.setState({articles: [...this.state.articles, {title, about}]})
+      setArticles((prev) => {  return [...prev, {title, about} ] } )
     }
   }
 
-  render() {
     return (
       <div>
-        {this.state.articles.map((article) => (
+        {articles.map((article) => (
           <ItemArticle id={article.id} article={article} />
         ))}
-        <Form addArticle={this.addArticle} />
+        <Form addArticle={addArticle}/>
       </div>
     );
-  }
 }
 
 export default Faq;

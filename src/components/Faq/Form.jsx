@@ -1,36 +1,29 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styles from './faq.module.scss'
  
-export class Form extends Component {
-  state = {
-    title: null,
-    about: null,
-  };
+function  Form({addArticle}) {
 
-  handleChange = (e) => {
-    if (e.target.value) {
-      this.setState({ [e.target.name]: e.target.value });
-    }
-  };
+  const [title, setTitle] = useState('');
+  const [about, setAbout] = useState('');
 
-  handleSubmitForm = (e) => {
+
+  const handleSubmitForm = (e) => {
     e.preventDefault();
-    const { title, about } = this.state;
-
     if (title && about) {
-      this.props.addArticle({ title, about });
+    addArticle({ title, about });
+   
     }
   };
 
-  render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmitForm}>
+        <form onSubmit={handleSubmitForm}>
           <fieldset>
             <legend>Форма</legend>
             <label className={styles.label}>
               <input
-                onChange={this.handleChange}
+                onChange={e => setTitle(e.target.value)}
+                value={title}
                 type="text"
                 name="title"
                 placeholder="Добавьте заголовок"
@@ -38,7 +31,8 @@ export class Form extends Component {
             </label>
             <label className={styles.label}>
               <input
-                onChange={this.handleChange}
+                onChange={e => setAbout(e.target.value)}
+                value={about}
                 type="text"
                 name="about"
                 placeholder="Добавьте текст"
@@ -49,7 +43,6 @@ export class Form extends Component {
         </form>
       </div>
     );
-  }
 }
 
 export default Form;
