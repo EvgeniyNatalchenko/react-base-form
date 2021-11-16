@@ -21,19 +21,11 @@ function Faq() {
 
   const [articles, setArticles] = useState(defaultState)
 
-
-
-  const addArticle = ({ title, about }) => {
-    if (title && about) {
-      setArticles((prev) => {  return [...prev, {title, about} ] } )
-    }
-  }
-
     return (
       <ArticleContext.Provider value={[articles, setArticles]}>
       <div>
         <Articles />
-        <Form addArticle={addArticle}/>
+        <Form />
       </div>
       </ArticleContext.Provider>
 
