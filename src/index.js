@@ -4,10 +4,13 @@ import Layout from "./components/Layout";
 import "./assets/styles/index.scss";
 import Faq from "./components/Faq";
  
+
+
+
 ReactDOM.render(
   <StrictMode>
     <Layout>
-      <div className="container">
+      <div className="container"> 
         <Faq />
       </div>
     </Layout>

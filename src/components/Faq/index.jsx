@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import ItemArticle from "./ItemArticle";
+import React, { useState, useContext } from "react";
+import Articles from "./Articles";
 import Form from "./Form";
  
 const defaultState = [
@@ -15,9 +15,13 @@ const defaultState = [
     },
 ]
 
+export const ArticleContext = React.createContext()
+
 function Faq() {
 
   const [articles, setArticles] = useState(defaultState)
+
+
 
   const addArticle = ({ title, about }) => {
     if (title && about) {
@@ -26,12 +30,13 @@ function Faq() {
   }
 
     return (
+      <ArticleContext.Provider value={[articles, setArticles]}>
       <div>
-        {articles.map((article) => (
-          <ItemArticle id={article.id} article={article} />
-        ))}
+        <Articles />
         <Form addArticle={addArticle}/>
       </div>
+      </ArticleContext.Provider>
+
     );
 }
 
