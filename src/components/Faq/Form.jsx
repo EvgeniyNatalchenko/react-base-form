@@ -1,15 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styles from './faq.module.scss'
  
 import {ArticleContext} from './index'
 import useForm from './useForm'
 
-function validator(values)
-{ let errors = {};
-   
-  if(!values.title) { errors.title = "Title is required" }
-  if(!values.about) { errors.about = "About is required" }
+function validator(values, initerrors={})
+{ let errors = initerrors;
 
+    if(!values.title) { errors.title = "Title is required" } else { delete errors.title }
+    if(!values.about) { errors.about = "About is required" } else { delete errors.about }
+  
 return errors;
 }
 
@@ -18,9 +18,10 @@ function  Form() {
   const [articles, setArticles] = useContext(ArticleContext)
 
   function submitForm() { return setArticles(prev => [...prev,  values ]) }
+  function initForm() { if(arguments.length === 0) return {title: "", about: ""}; else return {title: "*", about: "*"};}
 
 //  const {handleChange, handleSubmit, values, errors} = useForm( () => setArticles(prev => [...prev,  values ]), validator)
-  const {handleChange, handleSubmit, values, errors} = useForm( submitForm, validator)
+  const {handleChange, handleSubmit, values, errors} = useForm(initForm, submitForm, validator)
 
     return (
       <div>
